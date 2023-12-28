@@ -85,9 +85,11 @@ trainer.train()
 
 ***
 
-Once the fine tuned model had been produced, we compared the classification accuracy of the pretrained model with the classification accuracy of the fine tuned model. Below is the code snippet for how we calculated the accuracy for both models on the test set.
+Once the fine tuned model had been produced, we calculated the classification accuracy of the fine tuned model on the full test set:
 
 ```
+# check for classification accuracy of the fine tuned model on the test set
+trainer.evaluate(tokenized_datasets['test'])
 ```
 
-Interestingly, we found that the pretrained model had a classification accuracy of --% while the fine tuned model had a classification accuracy of --%! Fine 
+Interestingly, we found that the fine tuned model had a classification accuracy of 81.8%! Given the sometimes confusing format of the Rotten Tomatoes reviews, we found a lot of benefit in fine tuning a pretrained BERT classifier, namely the low amount of preprocessing needed to achieve such a high accuracy rate. In the future, I'd be interested in looking into fine tuning different types of models (that are not classifiers), including text-generation models such as GPT2 and GPT3. 
